@@ -145,7 +145,8 @@ EXECUTE PROCEDURE on_insert_thread_trigger_proc();
  */
 
 -- posts
-
+CREATE INDEX IF NOT EXISTS posts_id_index on posts (id);
+CREATE INDEX IF NOT EXISTS posts_thread_id_index on posts (thread, id);
 CREATE INDEX IF NOT EXISTS posts_parent_thread_id_index on posts (parent, thread, id);
 CREATE INDEX IF NOT EXISTS posts_post_tree_one_post_tree_index on posts ((post_tree[1]), post_tree);
 
